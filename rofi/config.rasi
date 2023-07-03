@@ -1,0 +1,6 @@
+configuration{
+    font: "Terminus 13";
+    sidebar-mode: true;
+}
+@theme "tokyonight"
+
