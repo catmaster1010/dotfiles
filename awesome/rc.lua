@@ -12,6 +12,8 @@ require("awful.hotkeys_popup.keys")
 
 local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 local logout_menu_widget = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
+local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
@@ -32,7 +34,7 @@ do
     end)
 end
 
-beautiful.init("theme.lua")
+beautiful.init("~/.config/awesome/theme.lua")
 
 terminal = "kitty"
 editor = "nvim"
@@ -70,7 +72,11 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 
 mytextclock = wibox.widget.textclock()
-
+local cw = calendar_widget({radius=0})
+mytextclock:connect_signal("button::press",
+    function(_, _, _, button)
+        if button == 1 then cw.toggle() end
+    end)
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
                     awful.button({ modkey }, 1, function(t)
@@ -175,18 +181,23 @@ awful.screen.connect_for_each_screen(function(s)
 
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
+        expand="none",
         { -- Left widgets
             logout_menu_widget(),
+            wibox.widget.systray(),
             layout = wibox.layout.fixed.horizontal,
             s.mypromptbox,
+            s.mytasklist,
         },
-        s.mytasklist, -- Middle widget
+        wibox.container.place(mytextclock,"center","center"), -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
+
             volume_widget{widget_type = "arc"},
-            mytextclock,
-            s.mylayoutbox,
+            spotify_widget({
+                font = 'terminus 10',
+                show_tooltip = false,
+            }),
         },
     }
 end)

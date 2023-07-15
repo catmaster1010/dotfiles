@@ -2,14 +2,16 @@ local themes_path = require("gears.filesystem").get_themes_dir()
 local dpi = require("beautiful.xresources").apply_dpi
 
 local theme = {}
-theme.wallpaper = "wall.png"
+theme.wallpaper = "~/.config/awesome/wall.png"
 
 theme.font      = "terminus 10"
+
+theme.fg= "#FFFFFF"
 
 theme.fg_normal  = "#a9b1d6"
 theme.bg_normal  = "#1a1b26"
 
-theme.bg_focus   = "#7aa2f7"
+theme.bg_focus   = "#1c1d29"
 theme.bg_urgent  = "#FFFFFF"
 theme.bg_systray = theme.bg_normal
 
@@ -18,10 +20,13 @@ theme.border_width  = dpi(2)
 
 theme.border_normal = "#414868"
 theme.border_focus  = "#c0caf5"
-
+theme.border_color = "#FFFFFF"
 
 theme.titlebar_bg_focus  = "#000000"
 theme.titlebar_bg_normal = "#16161e"
+
+theme.notification_bg ="#101014"
+theme.notification_fg = "#0da0ba"
 
 theme.menu_height = dpi(10)
 theme.menu_width  = dpi(100)
