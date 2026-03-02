@@ -4,3 +4,6 @@
 [submodule "polybar/weather-polybar-plugin"]
 	path = polybar/weather-polybar-plugin
 	url = https://github.com/GuidoFe/weather-polybar-plugin
+[submodule "rofi"]
+	path = rofi
+	url = https://github.com/adi1090x/rofi.git
