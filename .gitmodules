@@ -1,3 +1,6 @@
 [submodule "awesome/awesome-wm-widgets"]
 	path = awesome/awesome-wm-widgets
 	url = git@github.com:streetturtle/awesome-wm-widgets.git
+[submodule "polybar/weather-polybar-plugin"]
+	path = polybar/weather-polybar-plugin
+	url = https://github.com/GuidoFe/weather-polybar-plugin
