@@ -1,5 +1,5 @@
 # my very simple config 
-My minimalistic awesomewm, kitty and rofi config.
+My minimalistic i3, polybar, kitty and rofi config.
 
 ---
 # Pictures
